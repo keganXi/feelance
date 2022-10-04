@@ -37,16 +37,25 @@ const Navbar: React.FC = () => {
             }
         ]
     });
+
+
+    const navLinks = (item: LinkTypes) => {
+        return(
+            <div className="inline hover:border-b-2 hover:border-b-white pb-2 cursor-pointer">
+                <span>{ item.title }</span>
+            </div>
+        );
+    }
     
 
     return(
-        <nav className="bg-transparent py-5 px-4 sm:px-20 flex text-white">
+        <nav className="absolute z-20 top-0 w-full bg-transparent py-5 px-4 sm:px-24 flex text-white">
             <div className="w-full">
-                <h4>{ navOption.title }</h4>
+                <h4 className="text-base">{ navOption.title }</h4>
             </div>
 
-            <div className="hidden sm:visible w-full text-right space-x-12">
-                { navOption.links.map(item => <span className="cursor-pointer">{ item.title }</span>) }
+            <div className="hidden sm:block w-full text-right space-x-12">
+                { navOption.links.map(item => navLinks(item)) }
             </div>
         </nav>
     );
