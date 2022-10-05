@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 
-interface LinkTypes {
+type LinkTypes = {
     title: string,
     link: string
 }
@@ -16,7 +16,7 @@ interface NavbarPropTypes {
 
 
 const Navbar: React.FC = () => {
-    const [ navOption, setNavOption ] = useState<NavbarPropTypes["navOptions"]>({
+    const [ navOption ] = useState<NavbarPropTypes["navOptions"]>({
         title: "Kegan Overberg",
         links: [
             {
@@ -39,7 +39,7 @@ const Navbar: React.FC = () => {
     });
 
 
-    const navLinks = (item: LinkTypes) => {
+    const navLinks = (item: LinkTypes): JSX.Element => {
         return(
             <div className="inline hover:border-b-2 hover:border-b-white pb-2 cursor-pointer">
                 <span>{ item.title }</span>
