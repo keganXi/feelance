@@ -1,6 +1,7 @@
 import React, { ReactElement, useState } from "react";
 import type { HeadFC } from "gatsby";
 
+
 // Icons
 import { FiChevronsDown } from "@react-icons/all-files/fi/FiChevronsDown";
 import { FiLinkedin } from "@react-icons/all-files/fi/FiLinkedin";
@@ -9,6 +10,7 @@ import { FiGithub } from "@react-icons/all-files/fi/FiGithub";
 
 // Components.
 import Navbar from "../components/Navbar";
+import Image from "../components/Image";
 
 
 type SocialTypes = {
@@ -16,17 +18,15 @@ type SocialTypes = {
   link: string
 }
 
-
-type FeedbackTypes = {
-  name: string,
-  comment: string,
-  company: string 
+type WorkTypes = {
+  image: string,
+  alt: string
+  size?: number
 }
-
 
 interface IndexPagePropTypes {
   readonly socials: Array<SocialTypes>,
-  readonly feedback: Array<FeedbackTypes>
+  readonly work: Array<WorkTypes>
 }
 
 
@@ -45,26 +45,10 @@ const IndexPage: React.FC = () => {
       link: "#"
     }
   ]);
-  const [ feedback ] = useState<IndexPagePropTypes["feedback"]>([
+  const [ work ] = useState<IndexPagePropTypes["work"]>([
     {
-      name: "Chris W",
-      comment: "I have worked with Kegan on a number of projects and think very highly of him and his ability.His passion for web technology is second to none. He is well skilled in all areas of Full Stack Development including well tested code. All in all he is a great guy and you should not hesitate to add him to your team!",
-      company: "TherapyGuide"
-    },
-    {
-      name: "Armand B",
-      comment: "It was a nice experience to work with Kegan. I noticed he is autonomous, he is able to take decision on his own and he managed to create a good design and software, with a minimum of instructions, while proposing helpful features, he is good at was he is doing. Know what he does, solved a lot of issues and he is proactive.",
-      company: "EasierJobSeeker"
-    },
-    {
-      name: "Nolan S",
-      comment: "First class work, extremely helpful. Highly recommended developer who I will be happy to continue working with",
-      company: "Scrap Cars"
-    },
-    {
-      name: "Rajesh C",
-      comment: "Working with Kegan is awesome. Always willing to work and most importantly always available for communication.",
-      company: "Sentriq Industries"
+      image: "../images/easierjobseeker.png",
+      alt: "eaiser job seeker"
     }
   ]);
 
@@ -74,20 +58,17 @@ const IndexPage: React.FC = () => {
       <>
       { social.map(item => <a href={item.link}>{ item.icon }</a>) }
       </>
-    )
+    );
   }
 
   
-  const feedbackCards = (item: FeedbackTypes): JSX.Element => {
+  const workList = (item: WorkTypes): JSX.Element => {
     return(
-      <div className="bg-white cursor-pointer p-5 rounded-xl shadow-sm w-full sm:w-[320px] space-y-2">
-        <h3 className="font-semibold text-xl">{ item.name }</h3>
-        <span className="text-gray-400 text-md">{ item.company }</span>
-        <p>"{ item.comment }"</p>
+      <div>
+        <Image name={item.image} alt={item.alt} />
       </div>
-    )
+    );
   }
-
 
   return (
     <div>
@@ -119,11 +100,11 @@ const IndexPage: React.FC = () => {
       <main className="p-4 sm:p-10 bg-neutral-100">
 
         <div className="my-10 text-center">
-          <h1 className="text-2xl sm:text-[35px] font-semibold">Clients & Employers</h1>
+          <h1 className="text-2xl sm:text-[35px] font-semibold">Work</h1>
         </div>
 
         <div className="justify-center sm:flex sm:space-x-10 space-y-10 sm:space-y-0">
-          { feedback.map(item => feedbackCards(item))}
+          { work.map(item => workList(item)) }
         </div>
       </main>
     </div>
