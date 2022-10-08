@@ -34,15 +34,15 @@ const IndexPage: React.FC = () => {
   const [ social ] = useState<IndexPagePropTypes["socials"]>([
     {
       icon: <FiLinkedin size={20}/>,
-      link: "#"
+      link: "https://www.linkedin.com/in/kegan-overberg-aa9575173/"
     },
     {
       icon: <FiTwitter size={20}/>,
-      link: "#"
+      link: "https://twitter.com/Kegan90216382"
     },
     {
       icon: <FiGithub size={20}/>,
-      link: "#"
+      link: "https://github.com/keganXi"
     }
   ]);
   const [ feedback ] = useState<IndexPagePropTypes["feedback"]>([
@@ -72,7 +72,7 @@ const IndexPage: React.FC = () => {
   const socialsLinks = (): JSX.Element => {
     return(
       <>
-      { social.map(item => <a href={item.link}>{ item.icon }</a>) }
+      { social.map(item => <a href={item.link} target="_blank">{ item.icon }</a>) }
       </>
     )
   }
@@ -134,5 +134,5 @@ const IndexPage: React.FC = () => {
 export default IndexPage
 
 
-export const Head: HeadFC = () => <title>Kegan Overberg</title>
+export const Head: HeadFC = () => <title>KO | Fullstack Developer</title>
 
