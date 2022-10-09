@@ -60,6 +60,7 @@ const Navbar: React.FC = () => {
     const openMenu = (): JSX.Element => {
         return(
             <div className="fixed z-40 bg-primary w-full h-screen text-center space-y-8 p-8">
+
                 <div className="right-5 absolute top-5">
                     <button onClick={() => setMenu(false)}><AiOutlineClose size={25} color="white"/></button>
                 </div>

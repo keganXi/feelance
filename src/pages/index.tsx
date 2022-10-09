@@ -91,10 +91,10 @@ const IndexPage: React.FC = () => {
 
   return (
     <div>
-      <header className="h-[690px] w-full bg-primary">
+      <header className="h-screen w-full bg-primary">
         <Navbar />
 
-        <div className="h-full flex text-center text-white font-semibold">
+        <div className="h-screen flex text-center text-white font-semibold">
           <div className="m-auto space-y-1">
             <h1 className="text-[30px] sm:text-[60px]">Strategize Build Deploy</h1>
             <p className="sm:text-xl">Building amazing products that scale.</p>
