@@ -1,5 +1,5 @@
 import React, { ReactElement, useState } from "react";
-import type { HeadFC } from "gatsby";
+import { HeadFC, Link } from "gatsby";
 
 // Icons
 import { FiChevronsDown } from "@react-icons/all-files/fi/FiChevronsDown";
@@ -45,6 +45,8 @@ const IndexPage: React.FC = () => {
       link: "https://github.com/keganXi"
     }
   ]);
+
+
   const [ feedback ] = useState<IndexPagePropTypes["feedback"]>([
     {
       name: "Chris W",
@@ -72,7 +74,7 @@ const IndexPage: React.FC = () => {
   const socialsLinks = (): JSX.Element => {
     return(
       <>
-      { social.map(item => <a href={item.link} target="_blank">{ item.icon }</a>) }
+      { social.map(item => <Link to={item.link} target="_blank">{ item.icon }</Link>) }
       </>
     )
   }
@@ -92,7 +94,9 @@ const IndexPage: React.FC = () => {
   return (
     <div>
       <header className="h-screen w-full bg-primary">
-        <Navbar />
+        <div className="absolute z-20 w-full">
+          <Navbar />
+        </div>
 
         <div className="h-screen flex text-center text-white font-semibold">
           <div className="m-auto space-y-1">
@@ -105,7 +109,8 @@ const IndexPage: React.FC = () => {
             </div>
 
             <br />
-            <button className="bg-primary border-white border-2 rounded-lg text-white px-8 py-3 text-xl duration-200 hover:bg-white hover:text-primary">Let's talk</button>
+            <Link to="/contact/">
+            <button className="bg-primary border-white border-2 rounded-lg text-white px-8 py-3 text-xl duration-200 hover:bg-white hover:text-primary">Let's talk</button></Link>
           </div>
 
           <div className="absolute justify-center flex w-full bottom-20">
@@ -126,6 +131,8 @@ const IndexPage: React.FC = () => {
           { feedback.map(item => feedbackCards(item))}
         </div>
       </main>
+
+      <footer></footer>
     </div>
   )
 }

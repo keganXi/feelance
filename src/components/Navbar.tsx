@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { Link } from "gatsby";
 
 // Import icons.
 import { HiMenu } from "@react-icons/all-files/hi/HiMenu";
@@ -18,31 +18,31 @@ interface NavbarPropTypes {
         links: Array<LinkTypes>
     },
     general: {
-        menu: boolean
+        menu?: boolean
+        menuColor?: "white" | "#333241",
+        navColor?: "bg-primary" | "bg-white",
+        textColor?: string,
     } 
 }
 
 
-const Navbar: React.FC = () => {
+const Navbar: React.FC<NavbarPropTypes["general"]> = ({
+    navColor="bg-primary", textColor="text-white", menuColor="white" }) => {
     const [ menu, setMenu ] = useState<NavbarPropTypes["general"]["menu"]>(false);
     const [ navOption ] = useState<NavbarPropTypes["navOptions"]>({
         title: "Kegan Overberg",
         links: [
             {
                 title: "About",
-                link: "/about"
+                link: "/about/"
             },
             {
                 title: "Work",
-                link: "/work"
-            },
-            {
-                title: "Blog",
-                link: "/blog"
+                link: "/work/"
             },
             {
                 title: "Contact",
-                link: "/contact"
+                link: "/contact/"
             }
         ]
     });
@@ -50,8 +50,8 @@ const Navbar: React.FC = () => {
 
     const navLinks = (item: LinkTypes): JSX.Element => {
         return(
-            <div className="inline hover:border-b-2 hover:border-b-white pb-2 cursor-pointer">
-                <span>{ item.title }</span>
+            <div className={`inline hover:border-b-2 ${menuColor === "white"? "hover:border-b-white" : "hover:border-b-primary"} pb-2 cursor-pointer`}>
+                <Link className={textColor} to={ item.link }>{ item.title }</Link>
             </div>
         );
     }
@@ -59,15 +59,15 @@ const Navbar: React.FC = () => {
 
     const openMenu = (): JSX.Element => {
         return(
-            <div className="fixed z-40 bg-primary w-full h-screen text-center space-y-8 p-8">
+            <div className={`top-0 fixed z-40 w-full h-screen text-center space-y-8 p-8 ${textColor} ${navColor}`}>
 
                 <div className="right-5 absolute top-5">
-                    <button onClick={() => setMenu(false)}><AiOutlineClose size={25} color="white"/></button>
+                    <button onClick={() => setMenu(false)}><AiOutlineClose size={25} color={menuColor}/></button>
                 </div>
 
                 {
                 navOption.links.map(
-                    item => <div><a className="text-white font-semibold text-2xl" href={ item.link }>{ item.title }</a></div>
+                    item => <div><Link className={`font-semibold text-2xl ${textColor}`} to={ item.link }>{ item.title }</Link></div>
                     )}
             </div>
         );
@@ -76,9 +76,9 @@ const Navbar: React.FC = () => {
 
     return(
         <>
-            <nav className="absolute z-20 top-0 w-full bg-transparent py-5 px-4 sm:px-24 flex text-white">
+            <nav className={`w-full py-5 px-4 sm:px-24 flex ${navColor} ${textColor}`}>
                 <div className="w-full">
-                    <h4 className="text-base">{ navOption.title }</h4>
+                    <Link to="/"><h4 className="text-base">{ navOption.title }</h4></Link>
                 </div>
 
                 <div className="hidden sm:block w-full text-right space-x-12">
