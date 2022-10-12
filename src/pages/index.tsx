@@ -162,7 +162,7 @@ const IndexPage: React.FC = () => {
         </div>
       </header>
 
-      <main className="p-4 sm:p-10 bg-neutral-100 space-y-20 sm:space-34">
+      <main className="p-4 sm:p-10 bg-neutral-100 space-y-20 sm:space-y-34">
 
         {/* <div>
           <div className="my-10 text-center">
@@ -175,12 +175,12 @@ const IndexPage: React.FC = () => {
         </div> */}
 
 
-        <div className="space-y-10 sm:mt-16">
+        <div className="space-y-6 sm:space-y-10 mt-10 sm:mt-16">
           <div className="text-center">
             <h1 className="text-2xl sm:text-[40px] font-semibold">Services</h1>
           </div>
 
-          <div className="sm:flex sm:space-x-10 space-y-10 sm:space-y-0 text-2xl justify-center">
+          <div className="sm:flex sm:space-x-10 space-y-6 sm:space-y-0 text-2xl justify-center">
             { services.map(item => serviceCards(item)) }
           </div>
 
