@@ -25,28 +25,27 @@ type FeedbackTypes = {
 
 
 interface IndexPagePropTypes {
-  readonly socials: Array<SocialTypes>,
   readonly feedback: Array<FeedbackTypes>
 }
 
 
+export const social: Array<SocialTypes> = [
+  {
+    icon: <FiLinkedin size={20}/>,
+    link: "https://www.linkedin.com/in/kegan-overberg-aa9575173/"
+  },
+  {
+    icon: <FiTwitter size={20}/>,
+    link: "https://twitter.com/Kegan90216382"
+  },
+  {
+    icon: <FiGithub size={20}/>,
+    link: "https://github.com/keganXi"
+  }
+];
+
+
 const IndexPage: React.FC = () => {
-  const [ social ] = useState<IndexPagePropTypes["socials"]>([
-    {
-      icon: <FiLinkedin size={20}/>,
-      link: "https://www.linkedin.com/in/kegan-overberg-aa9575173/"
-    },
-    {
-      icon: <FiTwitter size={20}/>,
-      link: "https://twitter.com/Kegan90216382"
-    },
-    {
-      icon: <FiGithub size={20}/>,
-      link: "https://github.com/keganXi"
-    }
-  ]);
-
-
   const [ feedback ] = useState<IndexPagePropTypes["feedback"]>([
     {
       name: "Chris W",
@@ -85,7 +84,7 @@ const IndexPage: React.FC = () => {
       <div className="bg-white cursor-pointer p-5 rounded-xl shadow-sm w-full sm:w-[320px] space-y-2">
         <h3 className="font-semibold text-xl">{ item.name }</h3>
         <span className="text-gray-400 text-md">{ item.company }</span>
-        <p>"{ item.comment }"</p>
+        <p className="text-sm">"{ item.comment }"</p>
       </div>
     )
   }
@@ -121,14 +120,27 @@ const IndexPage: React.FC = () => {
         </div>
       </header>
 
-      <main className="p-4 sm:p-10 bg-neutral-100">
+      <main className="p-4 sm:p-10 bg-neutral-100 space-y-20 sm:space-y-36">
 
-        <div className="my-10 text-center">
-          <h1 className="text-2xl sm:text-[35px] font-semibold">Clients & Employers</h1>
+        <div>
+          <div className="my-10 text-center">
+            <h1 className="text-2xl sm:text-[35px] font-semibold">Clients & Employers</h1>
+          </div>
+
+          <div className="justify-center sm:flex sm:space-x-10 space-y-10 sm:space-y-0">
+            { feedback.map(item => feedbackCards(item))}
+          </div>
         </div>
 
-        <div className="justify-center sm:flex sm:space-x-10 space-y-10 sm:space-y-0">
-          { feedback.map(item => feedbackCards(item))}
+
+        <div>
+          <div className="my-10 text-center">
+            <h1 className="text-2xl sm:text-[35px] font-semibold">Work</h1>
+          </div>
+
+          <div className="justify-center sm:flex sm:space-x-10 space-y-10 sm:space-y-0">
+            
+          </div>
         </div>
       </main>
 

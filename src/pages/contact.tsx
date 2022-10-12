@@ -1,20 +1,10 @@
-import React, { useState, ReactElement } from "react";
+import React, { useState } from "react";
 import { HeadFC, Link } from "gatsby";
-
-// Icons
-import { FiChevronsDown } from "@react-icons/all-files/fi/FiChevronsDown";
-import { FiLinkedin } from "@react-icons/all-files/fi/FiLinkedin";
-import { FiTwitter } from "@react-icons/all-files/fi/FiTwitter";
-import { FiGithub } from "@react-icons/all-files/fi/FiGithub";
 
 // Components.
 import Navbar from "../components/Navbar";
-
-
-type SocialTypes = {
-    icon: ReactElement,
-    link: string    
-}
+import Footer from "../components/Footer";
+import { social } from "./index";
 
 
 interface ContactPagePropTypes {
@@ -23,25 +13,10 @@ interface ContactPagePropTypes {
         email: string,
         message: string
     },
-    socials: Array<SocialTypes>
 }
 
 
 const ContactPage: React.FC= () => {
-    const [ social ] = useState<ContactPagePropTypes["socials"]>([
-        {
-          icon: <FiLinkedin size={25}/>,
-          link: "https://www.linkedin.com/in/kegan-overberg-aa9575173/"
-        },
-        {
-          icon: <FiTwitter size={25}/>,
-          link: "https://twitter.com/Kegan90216382"
-        },
-        {
-          icon: <FiGithub size={25}/>,
-          link: "https://github.com/keganXi"
-        }
-    ]);
     const [ fullname, setFullname ] = useState<ContactPagePropTypes["form"]["fullname"]>("")
     const [ email, setEmail ] = useState<ContactPagePropTypes["form"]["email"]>("")
     const [ message, setMessage ] = useState<ContactPagePropTypes["form"]["message"]>("")
@@ -52,7 +27,7 @@ const ContactPage: React.FC= () => {
           <>
           { social.map(item => <Link to={item.link} target="_blank">{ item.icon }</Link>) }
           </>
-        )
+        );
     }
 
 
@@ -100,7 +75,9 @@ const ContactPage: React.FC= () => {
                 </div>
             </main>
 
-            <footer></footer>
+            <footer>
+                <Footer />
+            </footer>
         </div>
     );
 }

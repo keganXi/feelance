@@ -15,7 +15,6 @@ type LinkTypes = {
 interface NavbarPropTypes {
     readonly navOptions: {
         title: string,
-        links: Array<LinkTypes>
     },
     general: {
         menu?: boolean
@@ -26,29 +25,29 @@ interface NavbarPropTypes {
 }
 
 
+export const navLinks: Array<LinkTypes> = [
+    {
+        title: "About",
+        link: "/about/"
+    },
+    {
+        title: "Work",
+        link: "/work/"
+    },
+    {
+        title: "Contact",
+        link: "/contact/"
+    }
+];
+
+
 const Navbar: React.FC<NavbarPropTypes["general"]> = ({
     navColor="bg-primary", textColor="text-white", menuColor="white" }) => {
     const [ menu, setMenu ] = useState<NavbarPropTypes["general"]["menu"]>(false);
-    const [ navOption ] = useState<NavbarPropTypes["navOptions"]>({
-        title: "Kegan Overberg",
-        links: [
-            {
-                title: "About",
-                link: "/about/"
-            },
-            {
-                title: "Work",
-                link: "/work/"
-            },
-            {
-                title: "Contact",
-                link: "/contact/"
-            }
-        ]
-    });
+    const [ navTitle ] = useState<NavbarPropTypes["navOptions"]["title"]>("kegan Overberg");
 
 
-    const navLinks = (item: LinkTypes): JSX.Element => {
+    const navLinksComp = (item: LinkTypes): JSX.Element => {
         return(
             <div className={`inline hover:border-b-2 ${menuColor === "white"? "hover:border-b-white" : "hover:border-b-primary"} pb-2 cursor-pointer`}>
                 <Link className={textColor} to={ item.link }>{ item.title }</Link>
@@ -66,7 +65,7 @@ const Navbar: React.FC<NavbarPropTypes["general"]> = ({
                 </div>
 
                 {
-                navOption.links.map(
+                navLinks.map(
                     item => <div><Link className={`font-semibold text-2xl ${textColor}`} to={ item.link }>{ item.title }</Link></div>
                     )}
             </div>
@@ -78,11 +77,11 @@ const Navbar: React.FC<NavbarPropTypes["general"]> = ({
         <>
             <nav className={`w-full py-5 px-4 sm:px-24 flex ${navColor} ${textColor}`}>
                 <div className="w-full">
-                    <Link to="/"><h4 className="text-base">{ navOption.title }</h4></Link>
+                    <Link to="/"><h4 className="text-base">{ navTitle }</h4></Link>
                 </div>
 
                 <div className="hidden sm:block w-full text-right space-x-12">
-                    { navOption.links.map(item => navLinks(item)) }
+                    { navLinks.map(item => navLinksComp(item)) }
                 </div>
 
                 <div className="sm:hidden">
