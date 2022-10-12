@@ -27,12 +27,12 @@ interface NavbarPropTypes {
 
 export const navLinks: Array<LinkTypes> = [
     {
-        title: "About",
-        link: "/about/"
+        title: "Services",
+        link: "/"
     },
     {
         title: "Work",
-        link: "/work/"
+        link: "/"
     },
     {
         title: "Contact",
@@ -49,8 +49,8 @@ const Navbar: React.FC<NavbarPropTypes["general"]> = ({
 
     const navLinksComp = (item: LinkTypes): JSX.Element => {
         return(
-            <div className={`inline hover:border-b-2 ${menuColor === "white"? "hover:border-b-white" : "hover:border-b-primary"} pb-2 cursor-pointer`}>
-                <Link className={textColor} to={ item.link }>{ item.title }</Link>
+            <div className={`inline hover:border-b-[2.5px] ${menuColor === "white"? "hover:border-b-white" : "hover:border-b-primary"} pb-2 cursor-pointer hover:duration-200`}>
+                <Link className={`${textColor}`} to={ item.link }>{ item.title }</Link>
             </div>
         );
     }

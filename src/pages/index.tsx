@@ -6,9 +6,13 @@ import { FiChevronsDown } from "@react-icons/all-files/fi/FiChevronsDown";
 import { FiLinkedin } from "@react-icons/all-files/fi/FiLinkedin";
 import { FiTwitter } from "@react-icons/all-files/fi/FiTwitter";
 import { FiGithub } from "@react-icons/all-files/fi/FiGithub";
+import { MdDeveloperMode } from "@react-icons/all-files/md/MdDeveloperMode";
+import { CgWebsite } from "@react-icons/all-files/cg/CgWebsite";
 
 // Components.
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import { icons } from "@react-icons/all-files";
 
 
 type SocialTypes = {
@@ -24,8 +28,16 @@ type FeedbackTypes = {
 }
 
 
+type ServiceTypes = {
+  icon: ReactElement,
+  title: string,
+  description: string
+}
+
+
 interface IndexPagePropTypes {
-  readonly feedback: Array<FeedbackTypes>
+  readonly feedback: Array<FeedbackTypes>,
+  readonly services: Array<ServiceTypes>
 }
 
 
@@ -68,6 +80,23 @@ const IndexPage: React.FC = () => {
       company: "Sentriq Industries"
     }
   ]);
+  const [ services ] = useState<IndexPagePropTypes["services"]>([
+    {
+      icon: <CgWebsite />,
+      title: "Website Branding",
+      description: "Whether it's starting from scratch or a complete overhaul, We can develop a website that is fast, reliable and has a design that stands out and fits your brand so you can have a strong online presence."
+    },
+    {
+      icon: <CgWebsite />,
+      title: "Website Branding",
+      description: "Whether it's starting from scratch or a complete overhaul, We can develop a website that is fast, reliable and has a design that stands out and fits your brand so you can have a strong online presence."
+    },
+    {
+      icon: <MdDeveloperMode />,
+      title: "Tailormade Solution",
+      description: "Standing out from competition is important, you have to make sure that you offer a service that is different, efficient and scalable and that is a tailormade solution, Utilising modern web technologies we can take your requirements and turn it into a lasting product."
+    }
+  ])
 
 
   const socialsLinks = (): JSX.Element => {
@@ -87,6 +116,19 @@ const IndexPage: React.FC = () => {
         <p className="text-sm">"{ item.comment }"</p>
       </div>
     )
+  }
+
+
+  const serviceCards = (item: ServiceTypes): JSX.Element => {
+    return(
+      <div className="bg-white cursor-pointer p-5 rounded-xl shadow-sm w-full sm:w-[320px] space-y-2 relative">
+        <div className="absolute top-7 right-5">
+          { item.icon }
+        </div>
+        <h5 className="font-semibold text-xl">{ item.title }</h5>
+        <p className="text-base">{ item.description }</p>
+      </div>
+    );
   }
 
 
@@ -120,9 +162,9 @@ const IndexPage: React.FC = () => {
         </div>
       </header>
 
-      <main className="p-4 sm:p-10 bg-neutral-100 space-y-20 sm:space-y-36">
+      <main className="p-4 sm:p-10 bg-neutral-100 space-y-20 sm:space-34">
 
-        <div>
+        {/* <div>
           <div className="my-10 text-center">
             <h1 className="text-2xl sm:text-[35px] font-semibold">Clients & Employers</h1>
           </div>
@@ -130,21 +172,24 @@ const IndexPage: React.FC = () => {
           <div className="justify-center sm:flex sm:space-x-10 space-y-10 sm:space-y-0">
             { feedback.map(item => feedbackCards(item))}
           </div>
-        </div>
+        </div> */}
 
 
-        <div>
-          <div className="my-10 text-center">
-            <h1 className="text-2xl sm:text-[35px] font-semibold">Work</h1>
+        <div className="space-y-10 sm:mt-16">
+          <div className="text-center">
+            <h1 className="text-2xl sm:text-[40px] font-semibold">Services</h1>
           </div>
 
-          <div className="justify-center sm:flex sm:space-x-10 space-y-10 sm:space-y-0">
-            
+          <div className="sm:flex sm:space-x-10 space-y-10 sm:space-y-0 text-2xl justify-center">
+            { services.map(item => serviceCards(item)) }
           </div>
+
         </div>
       </main>
 
-      <footer></footer>
+      <footer>
+        <Footer />
+      </footer>
     </div>
   )
 }
