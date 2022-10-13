@@ -120,12 +120,12 @@ const IndexPage: React.FC = () => {
 
   const serviceCards = (item: ServiceTypes): JSX.Element => {
     return(
-      <div className="bg-white p-5 rounded-xl shadow-sm w-full sm:w-[320px] space-y-2 relative">
-        <div className="absolute top-7 right-5">
+      <div className="w-full sm:w-[350px] space-y-2 relative">
+        <div className="absolute top-2 right-5">
           { item.icon }
         </div>
-        <h5 className="font-semibold text-xl">{ item.title }</h5>
-        <p className="text-base">{ item.description }</p>
+        <h5 className="text-xl">{ item.title }</h5>
+        <p className="text-base text-gray-500">{ item.description }</p>
       </div>
     );
   }
@@ -155,7 +155,7 @@ const IndexPage: React.FC = () => {
         </div>
       </header>
 
-      <main className="p-4 sm:p-10 bg-neutral-100 space-y-20 sm:space-y-34">
+      <main className="p-4 sm:p-10 bg-white space-y-20 sm:space-y-34">
 
         {/* <div>
           <div className="my-10 text-center">
@@ -170,10 +170,10 @@ const IndexPage: React.FC = () => {
 
         <div className="space-y-6 sm:space-y-10 mt-10 sm:mt-16">
           <div className="text-center">
-            <h1 className="text-2xl sm:text-[40px] font-semibold">Services</h1>
+            <h1 className="text-2xl sm:text-[35px]">Services</h1>
           </div>
 
-          <div className="sm:flex sm:space-x-10 space-y-6 sm:space-y-0 text-2xl justify-center">
+          <div className="sm:flex sm:space-x-14 space-y-10 sm:space-y-0 text-2xl justify-center">
             { services.map(item => serviceCards(item)) }
           </div>
 
