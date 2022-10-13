@@ -2,7 +2,6 @@ import React, { ReactElement, useState } from "react";
 import { HeadFC, Link } from "gatsby";
 
 // Icons
-import { FiChevronsDown } from "@react-icons/all-files/fi/FiChevronsDown";
 import { FiLinkedin } from "@react-icons/all-files/fi/FiLinkedin";
 import { FiTwitter } from "@react-icons/all-files/fi/FiTwitter";
 import { FiGithub } from "@react-icons/all-files/fi/FiGithub";
@@ -152,12 +151,6 @@ const IndexPage: React.FC = () => {
             <br />
             <Link to="/contact/">
             <button className="bg-primary border-white border-2 rounded-lg text-white px-8 py-3 text-xl duration-200 hover:bg-white hover:text-primary">Let's talk</button></Link>
-          </div>
-
-          <div className="absolute justify-center flex w-full bottom-20">
-            <span className="cursor-pointer">
-              <FiChevronsDown size={30} color="white"/>
-            </span>
           </div>
         </div>
       </header>
