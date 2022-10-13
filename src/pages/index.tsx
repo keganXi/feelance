@@ -8,11 +8,11 @@ import { FiTwitter } from "@react-icons/all-files/fi/FiTwitter";
 import { FiGithub } from "@react-icons/all-files/fi/FiGithub";
 import { MdDeveloperMode } from "@react-icons/all-files/md/MdDeveloperMode";
 import { CgWebsite } from "@react-icons/all-files/cg/CgWebsite";
+import { BsHammer } from "@react-icons/all-files/bs/BsHammer";
 
 // Components.
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { icons } from "@react-icons/all-files";
 
 
 type SocialTypes = {
@@ -83,13 +83,13 @@ const IndexPage: React.FC = () => {
   const [ services ] = useState<IndexPagePropTypes["services"]>([
     {
       icon: <CgWebsite />,
-      title: "Website Branding",
+      title: "Web Development",
       description: "Whether it's starting from scratch or a complete overhaul, We can develop a website that is fast, reliable and has a design that stands out and fits your brand so you can have a strong online presence."
     },
     {
-      icon: <CgWebsite />,
-      title: "Website Branding",
-      description: "Whether it's starting from scratch or a complete overhaul, We can develop a website that is fast, reliable and has a design that stands out and fits your brand so you can have a strong online presence."
+      icon: <BsHammer />,
+      title: "Web Maintenance",
+      description: "Developing new features, updating the websites content and just making sure everything runs smoothly is important when it comes to maintaining a wesbite. "
     },
     {
       icon: <MdDeveloperMode />,
@@ -110,7 +110,7 @@ const IndexPage: React.FC = () => {
   
   const feedbackCards = (item: FeedbackTypes): JSX.Element => {
     return(
-      <div className="bg-white cursor-pointer p-5 rounded-xl shadow-sm w-full sm:w-[320px] space-y-2">
+      <div className="bg-white p-5 rounded-xl shadow-sm w-full sm:w-[320px] space-y-2">
         <h3 className="font-semibold text-xl">{ item.name }</h3>
         <span className="text-gray-400 text-md">{ item.company }</span>
         <p className="text-sm">"{ item.comment }"</p>
@@ -121,7 +121,7 @@ const IndexPage: React.FC = () => {
 
   const serviceCards = (item: ServiceTypes): JSX.Element => {
     return(
-      <div className="bg-white cursor-pointer p-5 rounded-xl shadow-sm w-full sm:w-[320px] space-y-2 relative">
+      <div className="bg-white p-5 rounded-xl shadow-sm w-full sm:w-[320px] space-y-2 relative">
         <div className="absolute top-7 right-5">
           { item.icon }
         </div>
