@@ -199,5 +199,5 @@ const IndexPage: React.FC = () => {
 export default IndexPage
 
 
-export const Head: HeadFC = () => <title>KO | Fullstack Developer</title>
+export const Head: HeadFC = () => <title>KO - Fullstack Developer</title>
 
