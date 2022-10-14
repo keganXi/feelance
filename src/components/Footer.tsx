@@ -8,7 +8,7 @@ import { navLinks } from "./Navbar";
 
 const Footer: React.FC = () => {
     return(
-        <div className="py-6 text-white space-y-10 bg-primary">
+        <div className="py-6 text-white space-y-10 bg-black">
             <div className="text-center space-y-3">
                 <h3 className="font-semibold text-xl">Socials</h3>
                 <div className="justify-center flex space-x-4">

@@ -12,6 +12,7 @@ import { BsHammer } from "@react-icons/all-files/bs/BsHammer";
 // Components.
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import Banner from "../components/Banner";
 
 
 type SocialTypes = {
@@ -155,7 +156,9 @@ const IndexPage: React.FC = () => {
         </div>
       </header>
 
-      <main className="p-4 sm:p-10 bg-white space-y-20 sm:space-y-34">
+      <main className="p-4 sm:p-10 bg-white space-y-20 sm:space-y-52 sm:my-16">
+
+        <div className="hidden sm:block h-[900px] w-[450px] rounded-r-full bg-orange-300 opacity-20 absolute left-0"></div>
 
         {/* <div>
           <div className="my-10 text-center">
@@ -168,7 +171,7 @@ const IndexPage: React.FC = () => {
         </div> */}
 
 
-        <div className="space-y-6 sm:space-y-10 mt-10 sm:mt-16">
+        <div className="space-y-8 sm:space-y-24 mt-16 sm:mt-0">
           <div className="text-center">
             <h1 className="text-2xl sm:text-[35px]">Services</h1>
           </div>
@@ -176,11 +179,16 @@ const IndexPage: React.FC = () => {
           <div className="sm:flex sm:space-x-14 space-y-10 sm:space-y-0 text-2xl justify-center">
             { services.map(item => serviceCards(item)) }
           </div>
-
         </div>
+
+
+        <div>
+          <Banner />
+        </div>
+
       </main>
 
-      <footer>
+      <footer className="sm:mt-28">
         <Footer />
       </footer>
     </div>
