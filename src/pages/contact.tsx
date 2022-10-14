@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { HeadFC, Link } from "gatsby";
+import emailjs from "@emailjs/browser";
 
 // Components.
 import Navbar from "../components/Navbar";
@@ -17,6 +18,7 @@ interface ContactPagePropTypes {
 
 
 const ContactPage: React.FC= () => {
+    const form: React.MutableRefObject<any> = useRef();
     const [ fullname, setFullname ] = useState<ContactPagePropTypes["form"]["fullname"]>("")
     const [ email, setEmail ] = useState<ContactPagePropTypes["form"]["email"]>("")
     const [ message, setMessage ] = useState<ContactPagePropTypes["form"]["message"]>("")
@@ -28,6 +30,18 @@ const ContactPage: React.FC= () => {
           { social.map(item => <Link to={item.link} target="_blank">{ item.icon }</Link>) }
           </>
         );
+    }
+
+
+    const sendEmail = (e: any) => {
+        e.preventDefault();
+
+        emailjs.sendForm('service_6z0jfv8', 'contact_form', form.current, 'c7oUhfTW29jDCzdtt')
+        .then((result) => {
+            console.log(result.text);
+        }, (error) => {
+            console.log(error.text);
+        });
     }
 
 
@@ -53,23 +67,23 @@ const ContactPage: React.FC= () => {
                 </div>
 
                 <div className="w-full rounded-2xl bg-gray-100 p-6 sm:p-8 mt-14 sm:mt-0">
-                    <form className="space-y-6">
+                    <form ref={form} onSubmit={sendEmail} className="space-y-6">
                         <div className="space-y-2">
                             <label>Full name*</label>
-                            <input type="text" placeholder="Your first and last name" className="p-2.5 w-full border border-gray-300 rounded-lg" name="full_name" onChange={e => setFullname(e.target.value)} value={fullname} />
+                            <input type="text" placeholder="Your first and last name" className="p-2.5 w-full border border-gray-300 rounded-lg" name="from_name" onChange={e => setFullname(e.target.value)} value={fullname} />
                         </div>
 
                         <div className="space-y-2">
                             <label>Email address*</label>
-                            <input type="email" placeholder="Hi@email.com" className="p-2.5 w-full border border-gray-300 rounded-lg" name="full_name" onChange={e => setEmail(e.target.value)} value={email} />
+                            <input type="email" placeholder="Hi@email.com" className="p-2.5 w-full border border-gray-300 rounded-lg" name="email_address" onChange={e => setEmail(e.target.value)} value={email} />
                         </div>
 
                         <div className="space-y-2">
                             <label>Message*</label>
-                            <textarea className="p-2.5 w-full sm:h-[200px] border border-gray-300 rounded-lg" name="full_name" placeholder="How can we help you?" onChange={e => setMessage(e.target.value)} value={message} />
+                            <textarea className="p-2.5 w-full sm:h-[200px] border border-gray-300 rounded-lg" name="message" placeholder="How can we help you?" onChange={e => setMessage(e.target.value)} value={message} />
                         </div>
 
-                        <button className="bg-primary rounded-xl px-6 py-3 text-white hover:bg-black">Send</button>
+                        <button type="submit" className="bg-primary rounded-xl px-6 py-3 text-white hover:bg-black">Send</button>
                         
                     </form>
                 </div>
