@@ -12,16 +12,20 @@ interface ContactPagePropTypes {
     form: {
         fullname: string,
         email: string,
-        message: string
+        message: string,
+        submit: boolean,
+        alertMsg: string
     },
 }
 
 
 const ContactPage: React.FC= () => {
     const form: React.MutableRefObject<any> = useRef();
-    const [ fullname, setFullname ] = useState<ContactPagePropTypes["form"]["fullname"]>("")
-    const [ email, setEmail ] = useState<ContactPagePropTypes["form"]["email"]>("")
-    const [ message, setMessage ] = useState<ContactPagePropTypes["form"]["message"]>("")
+    const [ fullname, setFullname ] = useState<ContactPagePropTypes["form"]["fullname"]>("");
+    const [ email, setEmail ] = useState<ContactPagePropTypes["form"]["email"]>("");
+    const [ message, setMessage ] = useState<ContactPagePropTypes["form"]["message"]>("");
+    const [ submit, setSubmit ] = useState<ContactPagePropTypes["form"]["submit"]>(false);
+    const [ alertMsg, setAlertMsg ] = useState<ContactPagePropTypes["form"]["alertMsg"]>("");
 
 
     const socialsLinks = (): JSX.Element => {
@@ -33,15 +37,17 @@ const ContactPage: React.FC= () => {
     }
 
 
-    const sendEmail = (e: any) => {
+    const sendEmail = (e: any): void => {
         e.preventDefault();
 
         emailjs.sendForm('service_6z0jfv8', 'contact_form', form.current, 'c7oUhfTW29jDCzdtt')
         .then((result) => {
-            console.log(result.text);
+            setAlertMsg("Your message has been sent! You can expect a reply within 24 hours.");
         }, (error) => {
-            console.log(error.text);
+            setAlertMsg("Oops! something went wrong :( Please try again.");
         });
+
+        setSubmit(true);
     }
 
 
@@ -83,6 +89,8 @@ const ContactPage: React.FC= () => {
                             <textarea className="p-2.5 w-full sm:h-[200px] border border-gray-300 rounded-lg" name="message" placeholder="How can we help you?" onChange={e => setMessage(e.target.value)} value={message} />
                         </div>
 
+                        { (submit? <span className="text-primary text-sm">{ alertMsg }</span> : null )}
+
                         <button type="submit" className="bg-primary rounded-xl px-6 py-3 text-white hover:bg-black">Send</button>
                         
                     </form>
@@ -100,4 +108,4 @@ const ContactPage: React.FC= () => {
 export default ContactPage;
 
 
-export const Head: HeadFC = () => <title>KO | Contact</title>
+export const Head: HeadFC = () => <title>KO - Contact</title>
