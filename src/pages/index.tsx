@@ -1,5 +1,6 @@
 import React, { ReactElement, useState } from "react";
 import { HeadFC, Link } from "gatsby";
+import { Link as ScrollLink } from "react-scroll";
 
 // Icons
 import { FiLinkedin } from "@react-icons/all-files/fi/FiLinkedin";
@@ -8,6 +9,8 @@ import { FiGithub } from "@react-icons/all-files/fi/FiGithub";
 import { MdDeveloperMode } from "@react-icons/all-files/md/MdDeveloperMode";
 import { CgWebsite } from "@react-icons/all-files/cg/CgWebsite";
 import { BsHammer } from "@react-icons/all-files/bs/BsHammer";
+import { BsChevronDoubleDown } from "@react-icons/all-files/bs/BsChevronDoubleDown";
+
 
 // Components.
 import Navbar from "../components/Navbar";
@@ -152,11 +155,22 @@ const IndexPage: React.FC = () => {
             <br />
             <Link to="/contact/">
             <button className="bg-primary border-white border-2 rounded-lg text-white px-8 py-3 text-xl duration-200 hover:bg-white hover:text-primary">Let's talk</button></Link>
+
+            <div className="w-full justify-center flex">
+              <div className="absolute bottom-10 cursor-pointer">
+                <ScrollLink
+                  to="main"
+                  spy={true}
+                  smooth={true}
+                  offset={-70}
+                  duration={500}><BsChevronDoubleDown size={25}/></ScrollLink>
+              </div>
+            </div>
           </div>
         </div>
       </header>
 
-      <main className="p-4 sm:p-10 bg-white space-y-20 sm:space-y-52 sm:my-16">
+      <main className="p-4 sm:p-10 bg-white space-y-20 sm:space-y-52 sm:my-16" id="main">
 
         <div className="hidden sm:block h-[900px] w-[450px] rounded-r-full bg-orange-300 opacity-20 absolute left-0"></div>
 

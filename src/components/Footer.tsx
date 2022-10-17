@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
             <div className="text-center space-y-3">
                 <h3 className="font-semibold text-xl">Socials</h3>
                 <div className="justify-center flex space-x-4">
-                    { social.map(item => <Link to={ item.link }>{ item.icon }</Link>)}
+                    { social.map(item => <Link to={ item.link } target="_blank">{ item.icon }</Link>)}
                 </div>
             </div>
 
