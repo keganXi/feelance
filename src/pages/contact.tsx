@@ -47,11 +47,11 @@ const ContactPage: React.FC= () => {
             setFullname("");
             setEmail("");
             setMessage("");
+            setSubmit(true);
         }, (error) => {
             setAlertMsg("Oops! something went wrong :( Please try again.");
+            setSubmit(true);
         });
-
-        setSubmit(true);
     }
 
 
