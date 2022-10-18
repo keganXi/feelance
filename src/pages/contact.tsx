@@ -42,7 +42,11 @@ const ContactPage: React.FC= () => {
 
         emailjs.sendForm('service_6z0jfv8', 'contact_form', form.current, 'c7oUhfTW29jDCzdtt')
         .then((result) => {
+            // Show message indicating email has been sent and clear states.
             setAlertMsg("Your message has been sent! You can expect a reply within 24 hours.");
+            setFullname("");
+            setEmail("");
+            setMessage("");
         }, (error) => {
             setAlertMsg("Oops! something went wrong :( Please try again.");
         });
@@ -76,20 +80,20 @@ const ContactPage: React.FC= () => {
                     <form ref={form} onSubmit={sendEmail} className="space-y-6">
                         <div className="space-y-2">
                             <label>Full name*</label>
-                            <input type="text" placeholder="Your first and last name" className="p-2.5 w-full border border-gray-300 rounded-lg" name="from_name" onChange={e => setFullname(e.target.value)} value={fullname} />
+                            <input type="text" placeholder="Your first and last name" className="p-2.5 w-full border border-gray-300 rounded-lg" name="from_name" onChange={e => setFullname(e.target.value)} value={fullname} required />
                         </div>
 
                         <div className="space-y-2">
                             <label>Email address*</label>
-                            <input type="email" placeholder="Hi@email.com" className="p-2.5 w-full border border-gray-300 rounded-lg" name="email_address" onChange={e => setEmail(e.target.value)} value={email} />
+                            <input type="email" placeholder="Hi@email.com" className="p-2.5 w-full border border-gray-300 rounded-lg" name="email_address" onChange={e => setEmail(e.target.value)} value={email} required />
                         </div>
 
                         <div className="space-y-2">
                             <label>Message*</label>
-                            <textarea className="p-2.5 w-full sm:h-[200px] border border-gray-300 rounded-lg" name="message" placeholder="How can we help you?" onChange={e => setMessage(e.target.value)} value={message} />
+                            <textarea className="p-2.5 w-full sm:h-[200px] border border-gray-300 rounded-lg" name="message" placeholder="How can we help you?" onChange={e => setMessage(e.target.value)} value={message} required/>
                         </div>
 
-                        { (submit? <span className="text-primary text-sm">{ alertMsg }</span> : null )}
+                        { (submit? <p className="text-primary text-sm">{ alertMsg }</p> : null )}
 
                         <button type="submit" className="bg-primary rounded-xl px-6 py-3 text-white hover:bg-black">Send</button>
                         

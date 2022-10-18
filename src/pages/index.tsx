@@ -156,10 +156,10 @@ const IndexPage: React.FC = () => {
             <Link to="/contact/">
             <button className="bg-primary border-white border-2 rounded-lg text-white px-8 py-3 text-xl duration-200 hover:bg-white hover:text-primary">Let's talk</button></Link>
 
-            <div className="w-full justify-center flex">
+            <div className="w-full justify-center sm:flex hidden">
               <div className="absolute bottom-10 cursor-pointer">
                 <ScrollLink
-                  to="main"
+                  to="services"
                   spy={true}
                   smooth={true}
                   offset={-70}
@@ -170,9 +170,9 @@ const IndexPage: React.FC = () => {
         </div>
       </header>
 
-      <main className="p-4 sm:p-10 bg-white space-y-20 sm:space-y-52 sm:my-16" id="main">
+      <main className="p-4 sm:p-10 bg-white space-y-20 sm:space-y-52 sm:my-16">
 
-        <div className="hidden sm:block h-[900px] w-[450px] rounded-r-full bg-orange-300 opacity-20 absolute left-0"></div>
+        <div className="hidden sm:block h-[900px] w-[450px] rounded-r-full bg-orange-300 opacity-20 absolute left-0" id="services"></div>
 
         {/* <div>
           <div className="my-10 text-center">
