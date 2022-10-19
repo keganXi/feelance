@@ -11,6 +11,10 @@ import { CgWebsite } from "@react-icons/all-files/cg/CgWebsite";
 import { BsHammer } from "@react-icons/all-files/bs/BsHammer";
 import { BsChevronDoubleDown } from "@react-icons/all-files/bs/BsChevronDoubleDown";
 
+// Images
+import EasierJobSeeker from "../images/easierjobseeker.png";
+import TherapyGuide from "../images/therapyguide.png";
+
 
 // Components.
 import Navbar from "../components/Navbar";
@@ -38,9 +42,19 @@ type ServiceTypes = {
 }
 
 
+type WorkTypes = {
+  image: "*.png" | "*.jpg",
+  link: string,
+  height: number,
+  width: number,
+  alt: string
+}
+
+
 interface IndexPagePropTypes {
   readonly feedback: Array<FeedbackTypes>,
-  readonly services: Array<ServiceTypes>
+  readonly services: Array<ServiceTypes>,
+  readonly work: Array<WorkTypes>
 }
 
 
@@ -55,7 +69,7 @@ export const social: Array<SocialTypes> = [
   },
   {
     icon: <FiGithub size={20}/>,
-    link: "https://github.com/keganXi"
+    link: "https://github.com/keganXi",
   }
 ];
 
@@ -99,7 +113,23 @@ const IndexPage: React.FC = () => {
       title: "Tailormade Solution",
       description: "Standing out from competition is important, you have to make sure that you offer a service that is different, efficient and scalable and that is a tailormade solution, Utilising modern web technologies we can take your requirements and turn it into a lasting product."
     }
-  ])
+  ]);
+  const [ work ] = useState<IndexPagePropTypes["work"]>([
+    {
+      image: TherapyGuide,
+      link: "https://therapyguide.com/",
+      height: 190,
+      width: 190,
+      alt: "therapy guide"
+    },
+    {
+      image: EasierJobSeeker,
+      link: "https://easierjobseeker.com/",
+      height: 110,
+      width: 110,
+      alt: "easier job seeker"
+    }
+  ]);
 
 
   const socialsLinks = (): JSX.Element => {
@@ -107,6 +137,19 @@ const IndexPage: React.FC = () => {
       <>
       { social.map(item => <Link to={item.link} target="_blank">{ item.icon }</Link>) }
       </>
+    )
+  }
+
+
+  const workLinks = (item: WorkTypes): JSX.Element => {
+    return(
+      <Link to={item.link} target="_blank">
+        <div className="justify-center flex rounded-xl hover:shadow-md h-[150px] w-[300px] bg-primary hover:bg-black duration-300">
+          <div className="m-auto">
+            <span><img src={item.image} height={item.height} width={item.width} alt={item.alt} /></span>
+          </div>
+        </div>
+      </Link>
     )
   }
 
@@ -192,6 +235,17 @@ const IndexPage: React.FC = () => {
 
           <div className="sm:flex sm:space-x-14 space-y-10 sm:space-y-0 text-2xl justify-center">
             { services.map(item => serviceCards(item)) }
+          </div>
+        </div>
+
+
+        <div className="space-y-8 sm:space-y-24">
+          <div className="text-center">
+            <h1 className="text-2xl sm:text-[35px]">Work</h1>
+          </div>
+
+          <div className="justify-center sm:flex sm:space-x-10 space-y-10 sm:space-y-0"> 
+            { work.map(item => workLinks(item))}
           </div>
         </div>
 
