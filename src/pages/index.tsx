@@ -15,7 +15,7 @@ import { BsChevronDoubleDown } from "@react-icons/all-files/bs/BsChevronDoubleDo
 // Components.
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import Banner from "../components/Banner";
+import LetsTalk from "../components/LetsTalk";
 
 
 type SocialTypes = {
@@ -197,7 +197,7 @@ const IndexPage: React.FC = () => {
 
 
         <div>
-          <Banner />
+          <LetsTalk />
         </div>
 
       </main>

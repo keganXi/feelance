@@ -2,7 +2,7 @@ import React, {} from "react";
 import { Link } from "gatsby";
 
 
-const Banner: React.FC = () => {
+const LetsTalk: React.FC = () => {
     return(
         <div className="text-center">
             <h1 className="text-2xl sm:text-[60px]">Let's get to work!</h1><br></br>
@@ -16,4 +16,4 @@ const Banner: React.FC = () => {
 }
 
 
-export default Banner;
+export default LetsTalk;
