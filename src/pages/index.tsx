@@ -143,13 +143,16 @@ const IndexPage: React.FC = () => {
 
   const workLinks = (item: WorkTypes): JSX.Element => {
     return(
-      <Link to={item.link} target="_blank">
-        <div className="justify-center flex rounded-xl hover:shadow-md h-[150px] w-[300px] bg-primary hover:bg-black duration-300">
-          <div className="m-auto">
-            <span><img src={item.image} height={item.height} width={item.width} alt={item.alt} /></span>
-          </div>
-        </div>
-      </Link>
+      <div>
+          <Link to={item.link} target="_blank">
+            <div className="justify-center flex rounded-xl hover:shadow-md h-[150px] w-[300px] bg-primary hover:bg-black duration-300">
+              <div className="m-auto">
+                <span><img src={item.image} height={item.height} width={item.width} alt={item.alt} /></span>
+              </div>
+            </div>
+          </Link>
+      </div>
+      
     )
   }
 
@@ -217,6 +220,7 @@ const IndexPage: React.FC = () => {
 
         <div className="hidden sm:block h-[900px] w-[450px] rounded-r-full bg-orange-300 opacity-20 absolute left-0" id="services"></div>
 
+        {/* Feedback */}
         {/* <div>
           <div className="my-10 text-center">
             <h1 className="text-2xl sm:text-[35px] font-semibold">Clients & Employers</h1>
@@ -228,6 +232,7 @@ const IndexPage: React.FC = () => {
         </div> */}
 
 
+        {/* Services */}
         <div className="space-y-8 sm:space-y-24 mt-16 sm:mt-0">
           <div className="text-center">
             <h1 className="text-2xl sm:text-[35px]">Services</h1>
@@ -239,17 +244,19 @@ const IndexPage: React.FC = () => {
         </div>
 
 
+        {/* Work */}
         <div className="space-y-8 sm:space-y-24">
           <div className="text-center">
             <h1 className="text-2xl sm:text-[35px]">Work</h1>
           </div>
 
-          <div className="justify-center sm:flex sm:space-x-10 space-y-10 sm:space-y-0"> 
+          <div className="sm:flex sm:space-x-10 space-y-10 sm:space-y-0 justify-center"> 
             { work.map(item => workLinks(item))}
           </div>
         </div>
 
 
+        {/* Let's Talk */}
         <div>
           <LetsTalk />
         </div>
