@@ -216,7 +216,7 @@ const IndexPage: React.FC = () => {
         </div>
       </header>
 
-      <main className="p-4 sm:p-10 bg-white space-y-20 sm:space-y-52 sm:my-16">
+      <main className="p-4 sm:p-10 bg-white space-y-20 sm:space-y-52 mb-16 sm:my-16">
 
         <div className="hidden sm:block h-[900px] w-[450px] rounded-r-full bg-orange-300 opacity-20 absolute left-0" id="services"></div>
 
