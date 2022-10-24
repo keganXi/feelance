@@ -27,6 +27,10 @@ interface NavbarPropTypes {
 
 export const navLinks: Array<LinkTypes> = [
     {
+        title: "Home",
+        link: "/"
+    },
+    {
         title: "Contact",
         link: "/contact/"
     }
