@@ -15,7 +15,6 @@ import { BsChevronDoubleDown } from "@react-icons/all-files/bs/BsChevronDoubleDo
 import EasierJobSeeker from "../images/easierjobseeker.png";
 import TherapyGuide from "../images/therapyguide.png";
 
-
 // Components.
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -144,15 +143,14 @@ const IndexPage: React.FC = () => {
   const workLinks = (item: WorkTypes): JSX.Element => {
     return(
       <div>
-          <Link to={item.link} target="_blank">
-            <div className="justify-center flex rounded-xl hover:shadow-md h-[150px] w-[300px] bg-primary hover:bg-black duration-300">
-              <div className="m-auto">
-                <span><img src={item.image} height={item.height} width={item.width} alt={item.alt} /></span>
-              </div>
+        <Link to={item.link} target="_blank">
+          <div className="justify-center flex rounded-xl hover:shadow-md h-[150px] sm:w-[300px] bg-primary hover:bg-black duration-300 w-full ">
+            <div className="m-auto">
+              <span><img src={item.image} height={item.height} width={item.width} alt={item.alt} /></span>
             </div>
-          </Link>
+          </div>
+        </Link>
       </div>
-      
     )
   }
 
@@ -250,7 +248,7 @@ const IndexPage: React.FC = () => {
             <h1 className="text-2xl sm:text-[35px]">Work</h1>
           </div>
 
-          <div className="sm:flex sm:space-x-10 space-y-10 sm:space-y-0 justify-center"> 
+          <div className="sm:space-x-10 space-y-10 sm:space-y-0 justify-center sm:flex"> 
             { work.map(item => workLinks(item))}
           </div>
         </div>
